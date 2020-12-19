@@ -26,3 +26,23 @@ class Solution {
             
     }
 }
+
+
+-------------------------------
+解法二：哈希表
+创建哈希表，对于每一个x，查找表中是否还有target-x，然后将x插入到哈希表中
+时间复杂度O（N），N为数组的遍历。
+空间复杂度O（N），哈希表的开销
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer , Integer> map = new HashMap<Integer , Integer>();
+        for(int i = 0; i < nums.length ;i++){
+                if(map.containsKey(target-nums[i])){
+                    return new int[]{map.get(target-nums[i]) , i};
+                }
+                map.put(nums[i] , i);            
+            }
+        return new int[]{0 , 0};
+    }
+}
+
